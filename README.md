@@ -58,12 +58,9 @@ usd and the last price.
 2. Write a function called flightDistance to compute the approximate distance between two
 locations on the Earth (in nautical miles1
 ) given the latitude and longitude of each coordinate
-as Double values. The needed function is
-d = a cos−1
-
-cos(δ1)cos(δ2)cos(λ1 − λ2) + sin(δ1)sin(δ2)
-
-where d is the flight distance2
+as Double values. The needed function is <br />
+d = a cos−1(cos(δ1)cos(δ2)cos(λ1 − λ2) + sin(δ1)sin(δ2)) <br />
+where d is the flight distance^2
 in miles between two points on a sphere of radius a (in miles),
 roughly 3963 miles for the Earth. Point one has latitude δ1 and longitude λ1 while point 2
 has latitude δ2 and longitude λ2. The latitude and longitude need to be in decimal form, i.e.
@@ -74,6 +71,62 @@ inverse, or arc cosine. Important: Please write your function using tuples to re
 coordinate; write a helper function to convert from degrees to radians. Also you must use
 a where clause. What is the flight distance between the point at 45◦N,122◦W to the point
 21◦N,158◦W? <br />
-1. Ok, so nautical miles aren’t SI units – but they’re standard for navigation purposes on a curved earth, so work
+* Ok, so nautical miles aren’t SI units – but they’re standard for navigation purposes on a curved earth, so work
 with me here. <br />
-2. http://mathworld.wolfram.com/GreatCircle.html
+* http://mathworld.wolfram.com/GreatCircle.html
+3. Write a function called factorial that computes the factorial of an Integer. Your function
+must use the foldl or foldr function. Also, use a guard to alert the user of an error when
+the parameter is negative. What is the factorial of 99?
+4. Write a function called isEven that tells you if a number is even or not. Please use a if-thenelse
+expression.
+5. Use a list comprehension and the sum function to determine the sum of the cubes of all the
+odd numbers between 1000 and 2000?
+6. Write a function that confirms the following closed form solution to the sum: <br />
+(N(N + 1)(2N + 1))/ 6, n, i=0, i^2 <br />
+for a given value of N.
+7. Write a function with this type signature: <br />
+count :: (Eq a, Num b) => [a] -> a -> b <br />
+or count :: Eq a => [a] -> a -> Int<br />
+This function takes, say, a list of numbers and a value. It tells you how many times the value
+appears in the list. So<br />
+count [1,2,3,2,5,1,4] 1 == 2
+since the number 1 appears two times. Write this function twice: once using a list comprehension
+and another time explicitly using recursion. Use it to count the number of double-ues
+in ‘western oregon wolves (wow) win winter wrestling’, as well as the number of things in
+something of another type (besides Int’s or Char’s).
+8. Write a function called maxList that uses recursion to compute the maximum element of
+a list. Write an explicit type declaration so that it can be used with numbers, letters, or
+anything that can be compared with >. Hints: look up the Ord type class and use the max
+function.
+9. Write expressions using map, filter, any or all to
+• remove all spaces from a string
+• filter out all even numbers from a list (use the even function)
+• double every value in a list
+• tell you True or False if a list contains the number 55
+• tell you True or False if all the values in a list are odd (use the odd function)
+10. Write a function called isPrime that determines if an Integer is a prime number (evenly
+divisible only by itself and one). For reference, here’s a list of the primes less than 100:<br />
+[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]<br />
+What are the 1000th through 1020th prime numbers? (starting at 2)
+11. Write a function called factor that will take an Integer and determine its prime factors
+(called prime factorization). The function should take an Integer and return a list
+of Integers. This list should be the prime factors of the number, not including multiplicity.
+For example, the prime factors of 65 are 2 and 7 (even though the full multiplication is
+56 = 23
+· 7 = 2 · 2 · 2 · 7). What are the prime factors of 175561 and 62451532000?
+12. The previous function can be sped up considerably by compiling it and running via a main
+function. To do this add the following at the top of your file:
+module Main where
+import System.Environment
+and then add the main function (please put it at the bottom):<br />
+main :: IO ()<br />
+main = do<br />
+args <- getArgs<br />
+print $ factor (read (head args)::Integer)<br />
+Compile like this:<br />
+ghc --make PartI.hs -O -o PartI<br />
+where the O and o are both the letter oh, the first one capitalized for ‘optimize’ and the
+second just the output name. And then run like this<br />
+./PartI 5698<br />
+which should give you<br />
+[2,7,11,37]<br />
